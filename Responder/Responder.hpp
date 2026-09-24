@@ -1,5 +1,7 @@
-#include "Handler/ClientHandler.hpp"
-#include "Data/Response.hpp"
+#pragma once
+
+class ClientHandler;
+class Response;
 
 class Responder {
 public:

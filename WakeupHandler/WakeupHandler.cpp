@@ -2,6 +2,8 @@
 
 #include <cstdint>
 
+#include "Reactor/Reactor.hpp"
+
 int WakeupHandler::getfd() {
     return wakeup_fd;
 }

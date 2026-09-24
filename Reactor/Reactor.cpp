@@ -1,12 +1,10 @@
 #pragma once
+
 #include <sys/epoll.h>
 #include <unistd.h>
 
 #include "Reactor.hpp"
-
-#include "EventHandler/EventHandler.hpp"
 #include "WakeupHandler/WakeupHandler.hpp"
-#include "Handler/ClientHandler.hpp"
 
 int Reactor::start() {
     // the infinite loop
@@ -45,7 +43,7 @@ void Reactor::set_wakeup_handler(WakeupHandler* ref_wakeup_handler) {
 }
 
 // called by 
-void Reactor::add_to_write_ready(ClientHandler* handler) {
+void Reactor::add_to_write_ready(EventHandler* handler) {
     {
         std::lock_guard<std::mutex> lock(write_guard);
         ready_to_write_clients.push(handler);
@@ -57,7 +55,7 @@ void Reactor::add_to_write_ready(ClientHandler* handler) {
 
 // called by wakeup handler
 void Reactor::process_write_clients() {
-    std::queue<ClientHandler*> local_queue;
+    std::queue<EventHandler*> local_queue;
     {
         std::lock_guard<std::mutex> lock(write_guard);
         std::swap(ready_to_write_clients, local_queue);

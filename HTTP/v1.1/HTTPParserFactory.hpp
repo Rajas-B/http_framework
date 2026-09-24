@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Protocol/IParserFactory.hpp"
 #include "HTTPParser.hpp"
 

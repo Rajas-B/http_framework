@@ -1,5 +1,7 @@
 #pragma once
+
 #include "RouteHandler/RouteHandlerFactory.hpp"
+#include "Tasks/HTTPTask.hpp"
 
 std::unique_ptr<BaseRouteHandler> RouteHandlerFactory::getRouteHandler(HTTPTask task) {
     auto it = routes.find(task.request->url);

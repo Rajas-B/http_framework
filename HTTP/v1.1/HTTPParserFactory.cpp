@@ -1,3 +1,4 @@
+#pragma once
 #include "HTTPParserFactory.hpp"
 
 HTTPParser* HTTPParserFactory::createParser() {

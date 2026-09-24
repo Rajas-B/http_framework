@@ -5,8 +5,6 @@
 #include <unistd.h>
 #include <cerrno>
 
-#include "HTTP/v1.1/HTTPParser.hpp"
-#include "Reactor/Reactor.hpp"
 #include "EventContext/EventContext.hpp"
 
 ClientHandler::ClientHandler(int clientfd, std::unique_ptr<EventContext> ctx): 
@@ -29,7 +27,7 @@ void ClientHandler::handle_read() {
             break;
         }
         // parser consume
-        if (parser->consume(buf, bytes_read) == Status::ERROR) {
+        if (parser.consume(buf, bytes_read) == Status::ERROR) {
             break;
         }
     }
@@ -92,4 +90,8 @@ bool ClientHandler::ready_for_write() {
 // not in the reactor's queue anymore, called in reactor
 void ClientHandler::mark_as_processed() {
     is_being_processed.store(false);
+}
+
+void ClientHandler::handle_close() {
+    
 }

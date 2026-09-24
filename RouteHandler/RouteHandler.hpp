@@ -1,7 +1,7 @@
 #pragma once
-#include "Data/Response.hpp"
-#include "Data/Request.hpp"
-#include "Data/Response.hpp"
+
+class Request;
+class Response;
 
 class RouteHandler {
     virtual void get(const Request& req, Response& res) = 0;

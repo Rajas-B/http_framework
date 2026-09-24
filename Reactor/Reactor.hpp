@@ -1,3 +1,5 @@
+#pragma once
+
 #include <sys/epoll.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -8,7 +10,6 @@
 #include <mutex>
 
 class EventHandler;
-class ClientHandler;
 class WakeupHandler;
 
 class Reactor {
@@ -17,7 +18,7 @@ public:
         epoll_fd = epoll_create1(0);
     }
     void add_handler(EventHandler* handler);
-    void add_to_write_ready(ClientHandler* handler);
+    void add_to_write_ready(EventHandler* handler);
     void set_wakeup_handler(WakeupHandler* wakeup_handler);
     void process_write_clients();
     int get_epoll_fd();
@@ -28,7 +29,7 @@ private:
     int epoll_fd;
     WakeupHandler* wakeup_handler;
     uint port;
-    std::queue<ClientHandler*> ready_to_write_clients;
+    std::queue<EventHandler*> ready_to_write_clients;
     std::mutex write_guard;
 };
 

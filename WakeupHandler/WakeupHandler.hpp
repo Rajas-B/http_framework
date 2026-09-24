@@ -1,9 +1,7 @@
 #pragma once
 #include "EventHandler/EventHandler.hpp"
 
-namespace reactor {
 class Reactor;
-}
 
 class WakeupHandler: public EventHandler {
 public:

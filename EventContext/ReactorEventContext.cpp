@@ -1,6 +1,6 @@
 #pragma once
-#include "ReactorEventContext.hpp"
 
+#include "ReactorEventContext.hpp"
 #include "Reactor/Reactor.hpp"
 #include "EventHandler/EventHandler.hpp"
 
@@ -17,5 +17,5 @@ void ReactorEventContext::remove_write_wakeup() {
 }
 
 void ReactorEventContext::add_to_write_queue() {
-
+    reactor.add_to_write_ready(handler);
 }

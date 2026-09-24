@@ -1,6 +1,7 @@
-#include "EventContext.hpp"
+#pragma once
 
-class EventHandler;
+#include "EventContext/EventContext.hpp"
+
 class Reactor;
 
 class ReactorEventContext: public EventContext {

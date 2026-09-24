@@ -1,8 +1,10 @@
 #pragma once
+
 #include "Data/Request.hpp"
-#include "Data/Response.hpp"
-#include "Tasks/HTTPTask.hpp"
 #include "Responder/Responder.hpp"
+
+class HTTPTask;
+class Response;
 
 class BaseRouteHandler {
 public:

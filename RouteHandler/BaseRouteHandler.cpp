@@ -2,6 +2,9 @@
 
 #include <utility>
 
+#include "Data/Response.hpp"
+#include "Tasks/HTTPTask.hpp"
+
 BaseRouteHandler::BaseRouteHandler(HTTPTask t) 
     : req(std::move(*t.request)),
       responder(std::move(t.responder)) 
